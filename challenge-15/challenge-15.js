@@ -1,8 +1,10 @@
-/*
+(function() {/*
 Envolva todo o código desse desafio em uma IIFE.
 Crie um arquivo chamado index.html e adicione esse script ao HTML.
 */
-
+      /**
+       * arquivo criado junto na pasta challenge-15
+       */
 /*
 Crie uma função construtora chamada "Person". Esse construtor deve ter
 as seguintes características:
@@ -20,8 +22,25 @@ as seguintes características:
   iremos passar um único argumento, que é a quantidade de anos que devem ser
   adicionados à idade original (age). Esse método deverá retornar o objeto
   que será instanciado.
-*/
-// ?
+  */
+ 
+function Person(name, lastName, age) {
+  this.name = name;
+  this.lastName = lastName;
+  this.age = age;
+   
+  this.pFullName = function getFullName() {
+    return `${this.name} ${this.lastName}`;
+  };
+    
+  this.pAge = function getAge() {
+    return this.age;
+  };
+    
+  this.pAddAge = function addAge(age) {
+    return this.age+= age;
+  };
+};
 
 /*
 Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
@@ -30,20 +49,34 @@ parâmetros corretamente para o construtor para criar as novas pessoas.
 Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
 */
 console.log( 'Novas pessoas criadas à partir de Person:' );
-// ?
+
+const adam = new Person('Adam', 'Sandler', 54);
+console.log(adam);
+
+const rob = new Person('Rob', 'Schneider', 57);
+console.log(rob);
+
+const steve = new Person('Steve', 'Buscemi', 63);
+console.log(steve);
 
 /*
 Mostre no console o nome completo de cada pessoa.
 */
 console.log( '\nNomes das pessoas:' );
-// ?
+
+console.log(adam.pFullName());
+console.log(rob.pFullName());
+console.log(steve.pFullName());
 
 /*
 Mostre no console as idades de cada pessoa, com a frase:
 - "[NOME COMPLETO] tem [IDADE] anos."
 */
 console.log( '\nIdade das pessoas:' );
-// ?
+
+console.log(adam.pAge());
+console.log(rob.pAge());
+console.log(steve.pAge());
 
 /*
 Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
@@ -51,4 +84,9 @@ cada um. A frase deverá ser no formato:
 - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
 */
 console.log( '\nNova idade das pessoas:' );
-// ?
+
+console.log(`${adam.pFullName()} agora tem ${adam.pAddAge(11)} anos.`);
+console.log(`${rob.pFullName()} agora tem ${rob.pAddAge(6)} anos.`);
+console.log(`${steve.pFullName()} agora tem ${steve.pAddAge(2)} anos.`);
+
+})();
